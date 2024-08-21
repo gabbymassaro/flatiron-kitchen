@@ -4,7 +4,7 @@
   <%= f.label :name %><br>
   <%= f.text_field :name %><br><br>
 
-  <%= f.label :ingredients, "Select Ingredients" %><br>
+  <%= f.label :ingredients, "Ingredients" %><br>
   <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name %><br><br>
 
   <%= f.submit %>
