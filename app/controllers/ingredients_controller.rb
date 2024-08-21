@@ -1,6 +1,7 @@
 class IngredientsController < ApplicationController
   def create
     ingredient = Ingredient.create
+    redirect_to ingredient.recipe
   end
 
   def index

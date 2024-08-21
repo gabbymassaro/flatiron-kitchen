@@ -9,11 +9,22 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    @recipe_ingredient = RecipeIngredient.new(recipe: @recipe)
+    @recipe.ingredients.build
   end
 
   def create
-    recipe = Recipe.create
-    redirect_to recipe
+    @recipe = Recipe.new(recipe_params)
+
+    if @recipe.save
+      redirect_to @recipe, notice: 'Recipe was successfully created.'
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def recipe_params
+    params.require(:recipe).permit(:name, ingredient_ids: [])
   end
 end
